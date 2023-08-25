@@ -1,10 +1,28 @@
-
 nest generate library common
 
-nest generate module database -p common 
-nest generate module config -p common 
+nest generate module database -p common
+nest generate module config -p common
+nest generate module logger
+
+nest g app reservations
+nest g app auth
+
+- change path in nest-cli.json
 
 Start mongodb service
-  mongod --dbpath=data/db
+mongod --dbpath=data/db
 
-  mongodb+srv://root:<password>@cluster0.fqpq6xx.mongodb.net/?retryWrites=true&w=majority
+new ValidationPipe({ whitelist: true })
+
+- whitelist untuk otomatis ngeremove property yg engk terdaftar di DTO
+
+DOCKER
+
+- build dlu
+  docker build ../../ -f Dockerfile -t sleepr_reservations
+- baru di run
+  docker run sleepr_reservations
+- compose
+  docker compose up
+- shut down
+  docker compose down
